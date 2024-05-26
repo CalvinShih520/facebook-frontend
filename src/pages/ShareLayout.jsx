@@ -1,11 +1,10 @@
-import { Link, Outlet } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import { Outlet } from "react-router-dom";
 import StyleNavbar from "../components/StyledNavbar";
 
-const ShareLayout = () => {
+const ShareLayout = ({ currentUser, logOut }) => {
     return (
         <>
-            <StyleNavbar />
+            <StyleNavbar currentUser={currentUser} logOut={logOut} />
             <Outlet />
         </>
     );

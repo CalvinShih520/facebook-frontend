@@ -1,14 +1,28 @@
+import React, { useState, useEffect } from "react";
+import PostService from "../services/post.service";
 
 const Home = () => {
-    return(   
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        PostService.getAllPublicPosts().then(
+            (response) => {
+                setPosts(response.data);
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    }, []);
+
+    return (
         <>
             <section className="section">
-                <h2>首頁</h2>
-                <h4>功能</h4>
-                <li>動態</li>
-                <li>發表動態</li>
-                <li>貼文</li>
-                <li>留言及回覆</li>
+                <h3>
+                    {posts.map((post, index) => (
+                        <div key={index}>{post.content}</div>
+                    ))}
+                </h3>
             </section>
         </>
     );
