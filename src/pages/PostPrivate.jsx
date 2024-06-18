@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import PostService from '../services/post.service';
-// import AuthService from '../services/auth.service';
-// import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import PostService from "../services/post.service";
+import AddComment from "../components/AddComment";
 
 const PostPrivate = () => {
   const [privatePosts, setPrivatePosts] = useState([]);
-
-  // const navigate = useNavigate();
 
   useEffect(() => {
     PostService.getAllPrivatePosts().then(
@@ -14,7 +11,7 @@ const PostPrivate = () => {
         setPrivatePosts(response.data);
       },
       (error) => {
-        console.log('Private page', error.response);
+        console.log("Private page", error.response);
         // Invalid token
         // if (error.response && error.response.status === 403) {
         //   AuthService.logout();
@@ -27,10 +24,15 @@ const PostPrivate = () => {
 
   return (
     <>
-    <section className="section">
-        <h3>{privatePosts.map((post) => post.content)}</h3>
-    </section>
-</>
+      <section className="section">
+        {privatePosts.map((post) => (
+          <div key={post._id}>
+            <h3>{post.content}</h3>
+            <AddComment postId={post._id} /> {/* 傳遞 postId 給 AddComment 組件 */}
+          </div>
+        ))}
+      </section>
+    </>
   );
 };
 
