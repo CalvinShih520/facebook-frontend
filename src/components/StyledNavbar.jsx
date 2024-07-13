@@ -7,7 +7,12 @@ const StyleNavbar = ({ currentUser, logOut }) => {
       <NavLink to='/about' className={({ isActive }) => (isActive ? 'link active' : 'link')}>About</NavLink>
       <NavLink to='/products' className={({ isActive }) => (isActive ? 'link active' : 'link')}>Products</NavLink>
       {currentUser && (
-        <NavLink to='/postprivate' className={({ isActive }) => (isActive ? 'link active' : 'link')}>Private</NavLink>
+        <>
+          <NavLink to='/postprivate' className={({ isActive }) => (isActive ? 'link active' : 'link')}>Private</NavLink>
+          <NavLink to='/friends' className={({ isActive }) => (isActive ? 'link active' : 'link')}>Friends</NavLink>
+          <NavLink to='/search-friends' className={({ isActive }) => (isActive ? 'link active' : 'link')}>Search Friends</NavLink>
+          <NavLink to='/friend-requests' className={({ isActive }) => (isActive ? 'link active' : 'link')}>Friend Requests</NavLink>
+        </>
       )}
       {currentUser ? (
         <a href="/login" className="link" onClick={logOut}>Logout</a>

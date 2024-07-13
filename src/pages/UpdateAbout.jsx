@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import userService from "../services/user.service";
 import TokenService from "../services/token.service";
 import { useNavigate } from "react-router-dom";
-import "./About.css"; // 引入CSS文件
+import './css/About.css'
 
 const UpdateAbout = () => {
   const navigate = useNavigate();

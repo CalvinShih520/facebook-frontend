@@ -15,9 +15,12 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 import ShareProductLayout from "./pages/ShareProductLayout";
 import AuthService from "./services/auth.service";
 import PostPrivate from "./pages/PostPrivate";
+import Friends from "./pages/Friends";
+import SearchFriends from "./pages/SearchFriends";
+import FriendRequests from "./pages/FriendRequests";
 
 function App() {
-  
+  const [user, setUser] = useState(null);
   const [currentUser, setCurrentUser] = useState(undefined);
 
   useEffect(() => {
@@ -80,6 +83,9 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="friends" element={<ProtectedRoute user={user}><Friends /></ProtectedRoute>} />
+          <Route path="search-friends" element={<ProtectedRoute user={user}><SearchFriends /></ProtectedRoute>} />
+          <Route path="friend-requests" element={<ProtectedRoute user={user}><FriendRequests /></ProtectedRoute>} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route
