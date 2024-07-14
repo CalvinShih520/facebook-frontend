@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      external: ['axios']
+      // 不需要 external: ['axios']
     }
   }
 })
